@@ -7,7 +7,6 @@
 	 * There is no form to show
 	 */
 	
-	// Hoooooi GITHUB
 
 	$session = false; 
 	$form 	= ''; 
