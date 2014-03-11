@@ -1,0 +1,336 @@
+//sass --watch scss/style.scss:css/style.css//
+
+/* handy box-sizing trick from: http://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+ }
+
+// imports
+@import "imports/variables", 
+		"imports/mixins",
+		"imports/font-awesome/font-awesome";
+
+.content {
+	margin: 0 auto;
+	display: block;
+	max-width: $grid-site-width;
+}
+
+h1 {
+  	font: {
+		family: $fontstack-headers;
+		size:   $fontsize-h1;
+		weight: bold;
+  }
+  color:      #333;
+  text-align: center; 
+}
+
+h2 {
+	font: {
+		family: $fontstack-headers; 
+		size:   $fontsize-h2; 
+	} 
+	color:      #333;
+  	text-align: center;
+}
+ 
+p {
+	@include body-text; 
+  }
+
+
+button {
+		height:		$height-button; 
+		padding:	0 25px; 
+		border: 	0; 
+		box-shadow: 0 3px;
+		text-transform: uppercase;
+		@include body-text; 				
+
+	}
+
+header {
+	height:		$height-header; 
+	background:	$color-header;
+
+	
+}
+
+.logo-container {
+		display:	block;
+		width: 		100%;
+		height: 	22px;
+
+}
+
+.logo {
+	background: white url(../../images/logo.png) no-repeat;
+	height: 		78px;
+	width: 			195px;
+	display: 		block;
+	text-indent:	-2000px;
+	margin:			60px auto 0;
+}
+
+.site-wrapper {
+ 	display: 		block;
+ 	margin:			$margin-wrapper; 
+	
+	.paragraph {
+		padding:	25px 75px; 
+		display: 	block;
+		height:		auto; 
+	}
+
+	.about-me {
+		background: $color-about-me; 
+
+		p {
+			display:	inline-block; 
+			width:		50%; 
+			float:		left; 
+			text-align: justify;	
+
+			&.work-motivation {
+				padding-right:	12px;
+			}
+
+			&.personal-motivation {
+				padding-left:	12px; 
+			}
+		}
+
+		form {
+			height: $height-button; 
+			text-align: center;
+
+			button {
+				border: 			0;
+				background-color:	#ED9E6D; 
+				box-shadow: 		0 3px #C4835A;
+			}
+		}
+	}
+
+	.portfolio {
+		background:	$color-portfolio; 
+
+		.portfolio-header {
+			padding: 0 50px;
+			p {
+				text-align: center;
+			}
+		}
+
+		.project {
+			width:		33%; 
+			display: 	inline-block;
+			float:		left; 
+			text-align: justify;
+			padding:	0 8px;
+
+			form {
+				text-align: center;
+			}
+			button {
+				background-color: 	#ED9E6D; 
+				box-shadow: 		$shadow-button #C4835A; 
+			}
+		}
+	}
+
+	.contact {
+		background:	$color-contact; 
+
+		.block-contact {
+			display:	inline-block;
+			width:		50%; 
+			float:		left;
+		}
+	}
+}
+
+footer {
+	margin:		0px;
+	padding: 	0px;
+}
+/* clearfix */
+.clearfix:after {
+     visibility: 	hidden;
+     display: 		block;
+     font-size: 	0;
+     content: 		" ";
+     clear: 		both;
+     height: 		0;
+     }
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */
+
+// .content {
+// 	margin: 0 auto;
+// 	display: block;
+// 	max-width: $grid-site-width;
+// }
+
+// header {
+// 	height: $height-header;
+// 	background-color: $color-about;
+// 	.home &{background: $color-home;}
+// 	.work &{background: $color-work;}
+// 	.about &{background: $color-about;}
+// 	.blog &{background: $color-blog;}
+// 	.contact &{background: $color-contact;}
+// 	ul{
+// 	 	@include h1-font;
+// 	 	text-transform: uppercase;
+// 	 	float: right;
+// 	 	margin: 0;
+// 	 	padding: 0;
+// 	 	height: $height-header;
+// 	 	font-size:20px;
+// 	 	line-height: 55px;
+// 	 	li{
+// 	 		display: inline-block;
+// 	 		float: left;
+// 	 		text-align: center;
+//  		}
+//  		a{
+//  			display: inline-block;
+//  			height: $height-header;
+//  			text-decoration:none;
+//  			color: inherit;
+//  			padding: 0 10px;
+//  		}
+//  	}
+// 	.home a{
+// 		&:hover, &:focus{
+// 			background: white;
+// 		}
+// 	}
+// 	.work a{
+// 		&:hover, &:focus{
+// 			background: $color-work;
+// 		}
+// 	}
+
+// 	.about a{
+// 		&:hover, &:focus{
+// 			background: $color-about;
+// 		}
+// 	}
+
+// 	.blog a{
+// 		&:hover, &:focus{
+// 			background: $color-blog;
+// 		}
+// 	}
+
+// 	.contact a{
+// 		&:hover, &:focus{
+// 			background: $color-contact;
+// 		}
+// 	}
+//  }
+// .about .about, .home .home {
+// 	a{
+// 		background: white;
+// 		&:hover, &:focus{
+// 			background: white;
+// 		}
+// 	}
+// }
+//  .logo-container{
+// 	background: url(../../images/logo.png) no-repeat;
+// 	display: inline-block;
+// 	text-indent: -2000px;
+// 	text-align: center;
+// 	float: left;
+// 	width: 294px;
+// 	height: $height-header;
+// }
+
+// .main-wrapper{
+//  	padding-top: 30px;
+//  	padding-bottom: 30px;
+//  	h1{
+//  		height: $height-h1;
+//  		margin: 0;
+//  		width: 330px;
+//  		float: left; 
+//  	}
+//  	time{
+//  		width: 330px;
+//  		float: right; 
+//  		text-align: right;
+//  		height: 23px;
+//  		padding-top: $height-h1 - 23px;
+//  	}
+ 	
+//  	time, p{
+//  		font-family: $fontstack-body;
+//  	}
+//  }
+
+//  footer{
+//  	padding: 10px 0;
+//  	height: $height-footer;
+//  	background-color: $color-footer;
+//  	h1{
+//  		margin: 0;
+//  	}
+//  	h2{
+//  		color: #333;
+//  	}
+//  	.form-email, .contact-other
+//  	{
+//  		float: left;
+//  		width: $grid-site-width / 2;
+//  	}
+//  	label, button {
+//  		display: block;
+//  	}
+//  	input, textarea{
+//  		width:300px;
+//  		margin: 0 0 10px;
+//  		padding:5px;
+//  		border:1px solid #ccc;
+//  	}
+//  }
+// .to-top{
+// 	background: white;
+// 	position: fixed;
+// 	bottom: 0;
+// 	right:calc(50% - #{$grid-site-width/2});
+// 	text-decoration:none;
+// 	color: inherit;
+// 	padding: 10px 20px;
+// 	margin:0;
+// 	border: 2px solid $color-footer;
+// 	border-bottom:none;
+// 	border-right:none;
+// }
+// .social-media{
+// 	list-style:none;
+// 	padding:0;
+// 	a{text-decoration:none; color:inherit;}
+// }
+
+// /* clearfix */
+// .clearfix:after {
+//      visibility: hidden;
+//      display: block;
+//      font-size: 0;
+//      content: " ";
+//      clear: both;
+//      height: 0;
+//      }
+// .clearfix { display: inline-block; }
+// /* start commented backslash hack \*/
+// * html .clearfix { height: 1%; }
+// .clearfix { display: block; }
+// /* close commented backslash hack */
+

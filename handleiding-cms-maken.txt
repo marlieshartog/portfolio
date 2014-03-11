@@ -1,0 +1,74 @@
+////// De grote Marlies wil een cms bouwen handleiding
+
+Marlies wil een site maken in 2 talen.
+
+Ze moet een CMS maken en deze beveligen met username/wachtwoord.
+Deze komt terecht op http://marlieshartog.nl/cms
+
+Een cms moet de volgende dingen kunnen doen om bruikbaar te zijn:
+CRUD:
+CREATE 		- INSTERT INTO ...
+READ 		- SELECT * FROM
+UPDATE 		- UPDATE ... WHERE ...
+DEACTIVATE 	- hebben we nu niet nodig. Voorzichtig mee zijn. WEG == WEG.
+
+Dit inlogscript heeft zij al gemaakt tijdens te les. Als er succesvol wordt ingelogd willen we de bezoeker doorsturen naar:
+http://marlieshartog.nl/cms/teksten.php
+
+De teksten die ze op de site heeft wil ze graag uit de database halen zodat deze makkelijk aangepast kunnen worden.
+Hiervoor moeten we een datbase maken met de naam "texts"
+Deze heeft de volgende kolommen: 
+- id
+- timestamp
+- title
+- type (textarea of input) (titels zijn kort dus input, projectbeschrijving is lang dus textarea)
+- NL_nl
+- EN_en
+
+Denk goed na over het type (varchar, int, etc)
+
+Vervolgens kan zij in haar html deze teksten laten zien!
+
+
+
+
+
+In het CMS moet ze een script schrijven waarin alle teksten worden opgehaald en weergegeven. Je wil deze als volgt onder elkaar krijgen (dmv een for loop) in een formulier.
+
+
+$texten = 'SELECT * FROM texten';
+foreach($texten as $key => $text)
+----------------------------
+<h1>$text['title']</h1>
+<p>$text['timestamp']</p>
+textarea NL_nl & textarea EN_en (naast elkaar)
+----------------------------
+
+Onderaan de pagina een mooie submit knop om alles op te updaten.
+
+
+
+
+
+
+
+
+Ook willen we een losse pagina om de projecten te updaten.
+Hiervoor maken we een aparte tabel in de databse:
+- id
+- timestamp
+- title
+- text_id
+- demo_url
+- source_url
+
+
+Op de project pagina willen we een overzicht krijgen van alle projecten in de database. Deze willen we onder elkaar zien in een tabel. Deze moeten we aan kunnen klikken op dit project aan te passen. Dan ga je naar een url als: http://marlieshartog.nl/cms/projecten.php?project=PROJECT_ID
+
+Deze $_GET param gebruik je om de juiste info van je project top te halen zodat je deze aan kunt passen.
+
+Ook willen we een knop voor "+ nieuw project". Deze linkt naar
+http://marlieshartog.nl/cms/projecten.php?project=new_project
+
+Door te kijken of ($_GET['project'] == 'new_project') weten we dat de invulvelden waar je normaal aanpast nu leeg moeten zijn zodat deze voor het nieuwe project door de gebruiker ingevuld kan worden.
+
