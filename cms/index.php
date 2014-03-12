@@ -7,7 +7,7 @@
 	 * This sends you to the login 
 	 */
 	
-	header('location: ./projecten.php');
+	header('location: ./cmshome.php');
 
 	// if (!isset($_SESSION['sid']) || ($_COOKIE['PHPSESSID'] != $_SESSION['sid'])) {
 	// 	header('location: ./login.php'); 

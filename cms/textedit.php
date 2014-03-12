@@ -60,6 +60,6 @@
 	echo show_title($result2);
 	echo show_text($result);
 
-	echo '<a href="projecten.php">Terug naar alle projecten</a>'; 
+	echo '<a href="cmshome.php">Terug naar alle projecten</a>'; 
 		
 ?>

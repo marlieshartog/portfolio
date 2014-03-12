@@ -1,15 +1,19 @@
 <?php
 	session_start();
 
-	# connect to the database
 	include('cms/config.inc.php');
 	include('cms/database.class.php');
+
+	/**
+	 * first:
+	 * ***** MODEL *****
+	 */
 
 	$db = new Database_class(DB_HOST, DB_NAME, DB_USER, DB_PASS);
 
 	$db->opendb();
 
-	# if specified that language is english, show english. Else: show dutch
+	# if specified that language is english, session contains english. Else: contain Dutch. Default: Dutch
 	if (isset($_GET['language'])) {
 		if ($_GET['language'] === 'EN_en') {
 			$_SESSION['language'] = 'EN_en'; 
@@ -18,21 +22,35 @@
 		}
 	}
 	else{
-		$_SESSION['language'] = 'NL_nl'; 		
+		$_SESSION['language'] && $_GET['language'] = 'NL_nl'; 		
 	}
+
 	var_dump($_SESSION);
-	# Get the texts in the right language
+
+// TODO
+	# Get the texts and @ TODO projects in the right language
 	$query 		= "SELECT ".$_SESSION['language'].", id FROM texts";  
 	$texts_raw 	= $db->querydb($query); 
 	$texts 		= array();
 
+	var_export($texts_raw);
+	echo '<br/><br/>';
+
 	# prepare the text array in a friendly way
 	foreach ($texts_raw as $key => $value) {
+		# texts
 		$texts[$value['id']] = $value[$_SESSION['language']];
 	}
 
-	var_dump($texts[20]); 
+	var_export($texts); 
+
+	/**
+	 *
+	 * next up:
+	 * ***** VIEW *****
+	 */
 ?>
+
 
 <head>
 	<title>Marlies Hartog | Starting PHP Developer</title>
@@ -70,7 +88,7 @@
 		<div class="site-wrapper">
 				<div class="paragraph about-me">
 					<h1>About me</h1>
-					<p class="work-motivation"><?php echo $texten[12]; ?></p>
+					<p class="work-motivation"><?php echo $texts[1]; ?></p>
 					<p class="personal-motivation">Besides coding, there are a lot of other things I love (to do). I like to keep myself fit by eating responsibly (on which I'm writing a <a href="">blog</a> and going to the gym about twice a week. The Body Pump and RPM training lessons are my favorite. Besides physical exercise, there's lots of other stuff I enjoy. Going to music festivals or parties, traveling all around the world, ironing my laundry, shopping for lots and lots of new clothes and reading interesting books are things that make me happy. I prefer to end week days by watching shows like Girls, Suits, Game of Thrones, American Horror Story and Dragonball Z. </p>
 					<span class="clearfix"></span>
 
