@@ -1,4 +1,5 @@
 <?php
+
 	/**
 	 * CONTROLLER
 	 */
@@ -48,6 +49,7 @@
 
 	if (isset($_SESSION['sid']) && $_COOKIE['PHPSESSID'] == $_SESSION['sid']) {
 	} else {
+		echo $form;
 		die();
 	}
 

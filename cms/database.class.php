@@ -30,14 +30,16 @@
 			$this->dblink = NULL; 
 		}
 
-		function querydb($sql) {
+		function querydb($sql, $parameters = array()) {
+
+
 			//echo 'Database_class -> querydb<br/>'; 
 			try{
 				// Je sql query
 				$query = $this->dblink->prepare($sql);
 				
 				// De sql query uitvoeren
-				$query->execute(); 
+				$query->execute($parameters); 
 				
 				// Resultaat opvangen in variabele
 				$result = $query->fetchAll(PDO::FETCH_ASSOC);

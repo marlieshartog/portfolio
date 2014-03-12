@@ -23,13 +23,13 @@
 		}
 
 	function show_text($result) {
-		$field = '<h1 Edit texts</h1>';
+		$field = '<h1>Edit texts</h1>';
 		$field .= '<form name="edit_texts" action="" method="POST">';
 		# show text in all languages
 		foreach ($result as $key => $value) {
 			foreach ($value as $key2 => $value2) {
 				$field .= '<h2>Edit '.$key2 .'</h2>';
-				$field .= '<textarea name="text_'.$key2.'">'.$result[0][$key2].'</textarea><br/>';
+				$field .= '<textarea style="width:400px; height:200px;" name="text_'.$key2.'">'.$result[0][$key2].'</textarea><br/>';
 			} 
 		}
 
