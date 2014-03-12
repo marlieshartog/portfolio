@@ -25,24 +25,17 @@
 		$_SESSION['language'] && $_GET['language'] = 'NL_nl'; 		
 	}
 
-	var_dump($_SESSION);
-
 // TODO
 	# Get the texts and @ TODO projects in the right language
 	$query 		= "SELECT ".$_SESSION['language'].", id FROM texts";  
 	$texts_raw 	= $db->querydb($query); 
 	$texts 		= array();
 
-	var_export($texts_raw);
-	echo '<br/><br/>';
-
 	# prepare the text array in a friendly way
 	foreach ($texts_raw as $key => $value) {
 		# texts
 		$texts[$value['id']] = $value[$_SESSION['language']];
 	}
-
-	var_export($texts); 
 
 	/**
 	 *
@@ -73,9 +66,10 @@
 				<ul>
 					<?php 	if ($_GET['language'] === 'NL_nl') {
 								echo '<li><a href="?language=EN_en">English</a></li>';
-							}
-							if ($_GET['language'] === 'EN_en') {
+							} elseif ($_GET['language'] === 'EN_en') {
 								echo '<li><a href="?language=NL_nl">Nederlands</a></li>';
+							} else {
+								echo '<li><a href="?language=EN_en">English</a></li>';
 							}
 					?>	
 				</ul>
@@ -89,7 +83,7 @@
 				<div class="paragraph about-me">
 					<h1>About me</h1>
 					<p class="work-motivation"><?php echo $texts[1]; ?></p>
-					<p class="personal-motivation">Besides coding, there are a lot of other things I love (to do). I like to keep myself fit by eating responsibly (on which I'm writing a <a href="">blog</a> and going to the gym about twice a week. The Body Pump and RPM training lessons are my favorite. Besides physical exercise, there's lots of other stuff I enjoy. Going to music festivals or parties, traveling all around the world, ironing my laundry, shopping for lots and lots of new clothes and reading interesting books are things that make me happy. I prefer to end week days by watching shows like Girls, Suits, Game of Thrones, American Horror Story and Dragonball Z. </p>
+					<p class="personal-motivation"><?php echo $texts[2];?></p>
 					<span class="clearfix"></span>
 
 					<form method="get" action="cv_marlieshartog.doc">

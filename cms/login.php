@@ -45,7 +45,6 @@
 	}
 
 	// include('html_kop.inc.php');
-	echo $form; 
 
 	if (isset($_SESSION['sid']) && $_COOKIE['PHPSESSID'] == $_SESSION['sid']) {
 	} else {

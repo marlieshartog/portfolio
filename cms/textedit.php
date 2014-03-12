@@ -2,8 +2,6 @@
 
 	include 'head.php';
 
-	$supported_languages = array('NL_nl', 'EN_en'); 
-
 	# EDIT THE TITLE
 	if (isset($_POST['edit_title'])) {
 		$sql = "UPDATE texts SET title = '".$_POST['title']."'WHERE id='".$_GET['id']."'"; 
@@ -24,13 +22,7 @@
 			$result = $db->querydb($sql);
 		}
 
-
-	
-
-	var_dump($result); 
-
-	function show_text(&$result) {
-		var_dump($result);
+	function show_text($result) {
 		$field = '<h1 Edit texts</h1>';
 		$field .= '<form name="edit_texts" action="" method="POST">';
 		# show text in all languages
@@ -45,22 +37,9 @@
 		$field .= '</form>';
 		return $field;
 
-
-
-		// $return = '<h1>Edit text</h1>';
-		// $return .= '<form name="edit" action="" method="POST">';
-
-		// $return .='
-		// 	<textarea name="text">'.$result[0]['NL_nl'].'</textarea><br/>
-		// 	';
-		// $return .='
-		// 	<input type="submit" name="edit" value="Submit"/>';
-		// $return .= '</form>';
-		// return $return;
-
 	}
 
-	function show_title(&$result2 = array()) {
+	function show_title($result2 = array()) {
 		$return = '<h1>Edit title</h1>';
 		$return .= '<form name="edit_title" action="" method="POST">';
 
@@ -83,7 +62,6 @@
 	# find the right texts
 	$sql = "SELECT NL_nl, EN_en FROM texts WHERE id='".$_GET['id']."'";
 			$result = $db->querydb($sql);
-	var_dump($result); 
 
 	# execute show_text
 	echo show_text($result);

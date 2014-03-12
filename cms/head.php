@@ -20,5 +20,4 @@
 
 	<body>
 		<div class="wrapper">
-			<a href="../">Terug naar de site</a><br/>
-
+			<a href="../">Terug naar de site</a><br/><br/><br/>
