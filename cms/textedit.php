@@ -2,7 +2,7 @@
 
 	include 'head.php';
 
-		
+	$supported_languages = array('NL_nl', 'EN_en'); 
 
 	# EDIT THE TITLE
 	if (isset($_POST['edit_title'])) {
@@ -15,44 +15,50 @@
 	
 	# EDIT THE DUTCH TEXT
 	if (isset($_POST['edit'])) {
-		$sql = "UPDATE texts SET NL_nl = '".$_POST['text']."' WHERE id='".$_GET['id']."'"; 
+		$sql = "UPDATE texts SET NL_nl = '".$_POST['text_NL_nl']."' WHERE id='".$_GET['id']."'"; 
+				$db->querydb($sql);		
+		$sql = "UPDATE texts SET EN_en = '".$_POST['text_EN_en']."' WHERE id='".$_GET['id']."'"; 
 				$db->querydb($sql);
 
-		$sql = "SELECT NL_nl FROM texts WHERE id='".$_GET['id']."'";
+		$sql = "SELECT id, NL_nl, EN_en FROM texts WHERE id='".$_GET['id']."'";
 			$result = $db->querydb($sql);
 		}
 
-	// find the right texts 
-	$sql = "SELECT NL_nl, EN_en FROM texts WHERE id='".$_GET['id']."'";
-			$result = $db->querydb($sql);
 
-	function show_text(&$result = array()) {
+	
+
+	var_dump($result); 
+
+	function show_text(&$result) {
+		var_dump($result);
+		$field = '<h1 Edit texts</h1>';
+		$field .= '<form name="edit_texts" action="" method="POST">';
+		# show text in all languages
+		foreach ($result as $key => $value) {
+			foreach ($value as $key2 => $value2) {
+				$field .= '<h2>Edit '.$key2 .'</h2>';
+				$field .= '<textarea name="text_'.$key2.'">'.$result[0][$key2].'</textarea><br/>';
+			} 
+		}
+
+		$field .= '<input type="submit" name="edit" value="Submit all"/>';
+		$field .= '</form>';
+		return $field;
 
 
-		# prepare the text array in a friendly way
-	foreach ($texts_raw as $key => $value) {
-		# texts
-		$texts[$value['id']] = $value[$_SESSION['language']];
+
+		// $return = '<h1>Edit text</h1>';
+		// $return .= '<form name="edit" action="" method="POST">';
+
+		// $return .='
+		// 	<textarea name="text">'.$result[0]['NL_nl'].'</textarea><br/>
+		// 	';
+		// $return .='
+		// 	<input type="submit" name="edit" value="Submit"/>';
+		// $return .= '</form>';
+		// return $return;
+
 	}
-
-
-
-		$return = '<h1>Edit text</h1>';
-		$return .= '<form name="edit" action="" method="POST">';
-
-		$return .='
-			<textarea name="text">'.$result[0]['NL_nl'].'</textarea><br/>
-			';
-		$return .='
-			<input type="submit" name="edit" value="Submit"/>';
-		$return .= '</form>';
-		return $return;
-
-	}
-
-// find the right title 
-	$sql = "SELECT title FROM texts WHERE id='".$_GET['id']."'";
-			$result2 = $db->querydb($sql);
 
 	function show_title(&$result2 = array()) {
 		$return = '<h1>Edit title</h1>';
@@ -67,8 +73,24 @@
 		return $return;
 	}
 
+	// find the right title 
+	$sql = "SELECT title FROM texts WHERE id='".$_GET['id']."'";
+			$result2 = $db->querydb($sql);
+	# execute show_title
 	echo show_title($result2);
+
+
+	# find the right texts
+	$sql = "SELECT NL_nl, EN_en FROM texts WHERE id='".$_GET['id']."'";
+			$result = $db->querydb($sql);
+	var_dump($result); 
+
+	# execute show_text
 	echo show_text($result);
+
+
+
+
 
 	echo '<a href="cmshome.php">Terug naar alle projecten</a>'; 
 		
