@@ -10,7 +10,7 @@
 		"imports/mixins",
 		"imports/font-awesome/font-awesome";
 
-.content {
+.inner {
 	margin: 0 auto;
 	display: block;
 	max-width: $grid-site-width;
@@ -82,18 +82,30 @@ header {
 	margin:			0 auto;
 }
 
+.panel {
+	display: block;
+	padding: 20px 0;
+}
+
+.panel-about-me {	
+	background: $color-about-me; 
+}
+
+.panel-contact {
+	background:	$color-contact;
+}
+
 .site-wrapper {
  	display: 		block;
  	margin:			$margin-wrapper; 
 	
 	.paragraph {
-		padding:	25px 75px; 
+		padding:	25px ($grid-site-width -1020px)	/2; 
 		display: 	block;
 		height:		auto; 
 	}
 
 	.about-me {
-		background: $color-about-me; 
 
 		p {
 			display:	inline-block; 
@@ -158,13 +170,38 @@ header {
 		}
 	}
 
-	.contact {
-		background:	$color-contact; 
+	.contact { 
 
 		.block-contact {
 			display:	inline-block;
 			width:		50%; 
 			float:		left;
+
+
+		}
+
+		.contact-online {
+			text-align: 	right;
+			padding-right: 	5px;
+
+			ul {
+				margin-bottom: 0;
+			}
+			li{
+				list-style: none;
+			}
+			h2 {
+				text-align: right;
+			}
+
+		}
+
+		.contact-offline {
+			padding-left: 5px;
+
+			h2 {
+				text-align: left;
+			}
 		}
 	}
 }

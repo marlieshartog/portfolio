@@ -96,78 +96,94 @@
 		</header>
 	<!--site wrapper-->
 		<div class="site-wrapper">
-				<div class="paragraph about-me">
-					<h1>About me</h1>
-					<p class="work-motivation"><?php echo $texts[1]; ?></p>
-					<p class="personal-motivation"><?php echo $texts[2];?></p>
-					<span class="clearfix"></span>
-					<a class="button" href="files/CV_MPHartog.pdf">Resume(.PDF)</a>
+			<div class="panel panel-about-me">
+				<div class="inner">
+					<div class="paragraph about-me">
+						<h1>About me</h1>
+						<p class="work-motivation"><?php echo $texts[1]; ?></p>
+						<p class="personal-motivation"><?php echo $texts[2];?></p>
+						<span class="clearfix"></span>
+						<a class="button" href="files/CV_MPHartog.pdf">Resume(.PDF)</a>
+					</div>
+
 				</div>
-				<div class="paragraph portfolio">
-					<div class="portfolio-header">
-						<h1>Portfolio</h1>
-						<p>During my PHP-training, every week I got an extra assignment, challenging me to use the new code I learned. I coded them all by myself, never entering a new part before I fully understood what I was doing. Every week I see progress, and hopefully soon I will look back on these projects thinking: what was I thinking? :)</p> 
-					</div> 
-					<div class="portfolio-content">
-						<div class="newest-projects">
-							<div class="project project-1">
-								<h2>Tic tac toe</h2>
-								<p>I particularly liked this assignment, because it was the first time I build a game from scratch - all by myself! I liked thinking out the steps I had to take. Figuring out where and when what tags and code to use was more of a challenge, but with some help from google and hints from skilled befriended programmers, I got a working game. Next up is to play against a computer and enlarge the playing field. </p> 
-								<form action="http://www.marlieshartog.nl/?tictactoe">
-									<button type="submit">See result</button>
-								</form>
-								<form method="get" action="tictactoe.zip">
-									<button type="submit">See source</button>
-								</form>
+			</div>
+			<div class="panel panel-portfolio">
+				<div class="inner">
+					<div class="paragraph portfolio">
+						<div class="portfolio-header">
+							<h1>Portfolio</h1>
+							<p>During my PHP-training, every week I got an extra assignment, challenging me to use the new code I learned. I coded them all by myself, never entering a new part before I fully understood what I was doing. Every week I see progress, and hopefully soon I will look back on these projects thinking: what was I thinking? :)</p> 
+						</div> 
+						<div class="portfolio-content">
+							<div class="newest-projects">
+								<div class="project project-1">
+									<h2>Tic tac toe</h2>
+									<p>I particularly liked this assignment, because it was the first time I build a game from scratch - all by myself! I liked thinking out the steps I had to take. Figuring out where and when what tags and code to use was more of a challenge, but with some help from google and hints from skilled befriended programmers, I got a working game. Next up is to play against a computer and enlarge the playing field. </p> 
+									<form action="http://www.marlieshartog.nl/?tictactoe">
+										<button type="submit">See result</button>
+									</form>
+									<form method="get" action="tictactoe.zip">
+										<button type="submit">See source</button>
+									</form>
+								</div>
+								<div class="project project-2">
+									<h2>Login system</h2>
+									<p>I worked 2 full days on this assignment. I remember thinking: oh my, I'm making something I use everyday! After finishing, the most important thing I learned was how to put gut use to $_SESSION. I can't wait to learn more on security, that got me interested. </p> 
+									<form action="http://www.marlieshartog.nl/?login_system">
+										<button type="submit">See result</button>
+									</form>
+									<form method="get" action="login_system.zip">
+										<button type="submit">See source</button>
+									</form>
+								</div>
+								<div class="project project-3">
+									<h2>Lorem Ipsum</h2>
+									<p>I worked 2 full days on this assignment. I remember thinking: oh my, I'm making something I use everyday! After finishing, the most important thing I learned was how to put gut use to $_SESSION. I can't wait to learn more on security, that got me interested. </p> 
+									<form action="">
+										<button type="submit">See result</button>
+									</form>
+									<form method="get" action=".zip">
+										<button type="submit">See source</button>
+									</form>
+								</div>
+								<span class="clearfix"></span>
 							</div>
-							<div class="project project-2">
-								<h2>Login system</h2>
-								<p>I worked 2 full days on this assignment. I remember thinking: oh my, I'm making something I use everyday! After finishing, the most important thing I learned was how to put gut use to $_SESSION. I can't wait to learn more on security, that got me interested. </p> 
-								<form action="http://www.marlieshartog.nl/?login_system">
-									<button type="submit">See result</button>
-								</form>
-								<form method="get" action="login_system.zip">
-									<button type="submit">See source</button>
-								</form>
-							</div>
-							<div class="project project-3">
-								<h2>Lorem Ipsum</h2>
-								<p>I worked 2 full days on this assignment. I remember thinking: oh my, I'm making something I use everyday! After finishing, the most important thing I learned was how to put gut use to $_SESSION. I can't wait to learn more on security, that got me interested. </p> 
-								<form action="">
-									<button type="submit">See result</button>
-								</form>
-								<form method="get" action=".zip">
-									<button type="submit">See source</button>
-								</form>
-							</div>
-							<span class="clearfix"></span>
 						</div>
 					</div>
-				</div>	
-				<footer>
-					<div class="paragraph contact">
-						<h1>Contact</h1>
-						<div class="block-contact contact-online">
-							<h3>Online</h3>
-							<ul>
-								<li><a href="http://www.facebook.com/marlies.hartog.3">Facebook</a></li>
-								<li><a href="github??">Github</a></li>
-								<li><a href="linkedin??">LinkedIn</a></li>
-								<li><a href="http://www.marlieshartog.nl/?send_email"></a></li>
-							</ul>
+				</div>
+			</div>
+
+			<div class="panel panel-contact">
+				<div class="inner">
+					<footer>
+						<div class="paragraph contact">
+							<h1>Contact</h1>
+							<div class="block-contact contact-online">
+								<h2>Online</h2>
+								<ul>
+									<li><a href="http://www.facebook.com/marlies.hartog.3">Facebook</a></li>
+									<li><a href="linkedin??">LinkedIn</a></li>
+									<li><a href="github??">Github</a></li>
+									<li><a class="email-link" href="http://www.marlieshartog.nl/?send_email">E-mail me</a></li>
+								</ul>
+							</div>
+							<div class="block-contact contact-offline">
+								<h2>Offline</h2>
+								<address>
+									Marlies Hartog<br/>
+									Nieuwstraat 24A<br/>
+									1441 CM Purmerend<br/>
+									Nederland
+								</address>
+							</div>
+							
+							<span class="clearfix"></span>	
 						</div>
-						<div class="block-contact contact-offline">
-							<h3>Offline</h3>
-							<address>
-								Marlies Hartog<br/>
-								Nieuwstraat 24A<br/>
-								1441 CM Purmerend<br/>
-								06 129 86 152
-							</address>
-						</div>
-						<span class="clearfix"></span>	
-					</div>
-				</footer>
+					</footer>
+				</div>
+			</div>
+			
 		</div>
 	</div>
 </body>

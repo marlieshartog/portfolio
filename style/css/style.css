@@ -1333,10 +1333,10 @@
 .fa-plus-square-o:before {
   content: "\f196"; }
 
-.content {
+.inner {
   margin: 0 auto;
   display: block;
-  max-width: 1020px; }
+  max-width: 960px; }
 
 h1 {
   font-family: "BenchNine", sans-serif;
@@ -1390,43 +1390,51 @@ header {
   text-indent: -2000px;
   margin: 0 auto; }
 
+.panel {
+  display: block;
+  padding: 20px 0; }
+
+.panel-about-me {
+  background: #ffa8c1; }
+
+.panel-contact {
+  background: #59bfbb; }
+
 .site-wrapper {
   display: block;
-  margin: 0 25px; }
+  margin: 0; }
   .site-wrapper .paragraph {
-    padding: 25px 75px;
+    padding: 25px 960px -1020px/2;
     display: block;
     height: auto; }
-  .site-wrapper .about-me {
-    background: #ffa8c1; }
-    .site-wrapper .about-me p {
-      display: inline-block;
-      width: 50%;
-      float: left;
-      text-align: justify; }
-      .site-wrapper .about-me p.work-motivation {
-        padding-right: 12px; }
-      .site-wrapper .about-me p.personal-motivation {
-        padding-left: 12px; }
-    .site-wrapper .about-me .button {
-      text-decoration: none;
-      color: black;
-      font-weight: normal;
-      display: block;
-      width: 160px;
-      line-height: 30px;
-      padding: 0 25px;
-      border: 0;
-      text-transform: uppercase;
-      font-family: "Didact Gothic", sans-serif;
-      font-size: 16px;
-      font-weight: bold;
-      border: 0;
-      background-color: #ED9E6D;
-      box-shadow: 0 3px #C4835A;
-      height: 30px;
-      text-align: center;
-      margin: 0 auto; }
+  .site-wrapper .about-me p {
+    display: inline-block;
+    width: 50%;
+    float: left;
+    text-align: justify; }
+    .site-wrapper .about-me p.work-motivation {
+      padding-right: 12px; }
+    .site-wrapper .about-me p.personal-motivation {
+      padding-left: 12px; }
+  .site-wrapper .about-me .button {
+    text-decoration: none;
+    color: black;
+    font-weight: normal;
+    display: block;
+    width: 160px;
+    line-height: 30px;
+    padding: 0 25px;
+    border: 0;
+    text-transform: uppercase;
+    font-family: "Didact Gothic", sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    border: 0;
+    background-color: #ED9E6D;
+    box-shadow: 0 3px #C4835A;
+    height: 30px;
+    text-align: center;
+    margin: 0 auto; }
   .site-wrapper .portfolio {
     background: white; }
     .site-wrapper .portfolio .portfolio-header {
@@ -1444,12 +1452,23 @@ header {
       .site-wrapper .portfolio .project button {
         background-color: #ED9E6D;
         box-shadow: 0 3px #c4835a; }
-  .site-wrapper .contact {
-    background: #59bfbb; }
-    .site-wrapper .contact .block-contact {
-      display: inline-block;
-      width: 50%;
-      float: left; }
+  .site-wrapper .contact .block-contact {
+    display: inline-block;
+    width: 50%;
+    float: left; }
+  .site-wrapper .contact .contact-online {
+    text-align: right;
+    padding-right: 5px; }
+    .site-wrapper .contact .contact-online ul {
+      margin-bottom: 0; }
+    .site-wrapper .contact .contact-online li {
+      list-style: none; }
+    .site-wrapper .contact .contact-online h2 {
+      text-align: right; }
+  .site-wrapper .contact .contact-offline {
+    padding-left: 5px; }
+    .site-wrapper .contact .contact-offline h2 {
+      text-align: left; }
 
 footer {
   margin: 0px;
