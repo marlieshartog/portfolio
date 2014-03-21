@@ -53,7 +53,7 @@
 			}
 		}
 
-		function aantaldb($sql) {
+		function countrows($sql) {
 			//echo 'Database_class -> aantaldb<br/>'; 
 			try{
 				// Je sql query

@@ -1,6 +1,7 @@
 <?php
 	session_start();
-
+	session_destroy();
+	
 	include('cms/config.inc.php');
 	include('cms/database.class.php');
 
@@ -15,19 +16,25 @@
 
 	# if specified that language is english, session contains english. Else: contain Dutch. Default: Dutch
 	if (isset($_GET['language'])) {
+
 		if ($_GET['language'] === 'EN_en') {
+
 			$_SESSION['language'] = 'EN_en'; 
+
 		} else if($_GET['language'] === 'NL_nl'){
+
 			$_SESSION['language'] = 'NL_nl';
 		}
-	}
-	else{
-		$_SESSION['language'] && $_GET['language'] = 'NL_nl'; 		
+	} else {
+
+		$_SESSION['language'] = 'NL_nl' && $_GET['language'] = 'NL_nl'; 		
 	}
 
 // TODO
 	# Get the texts and @ TODO projects in the right language
-	$query 		= "SELECT ".$_SESSION['language'].", id FROM texts";  
+	$query 		= "	SELECT ".$_SESSION['language'].", id 
+					FROM texts";  
+
 	$texts_raw 	= $db->querydb($query); 
 	$texts 		= array();
 
@@ -37,11 +44,17 @@
 		$texts[$value['id']] = $value[$_SESSION['language']];
 	}
 
+
+
+
+	$query 		= "	SELECT * FROM projects";  
+	$projects 	= $db->querydb($query);
 	/**
 	 *
 	 * next up:
 	 * ***** VIEW *****
 	 */
+	
 ?>
 
 
@@ -64,19 +77,22 @@
 		<header class="main-header">
 			<div class="language">
 				<ul>
-					<?php 	if ($_GET['language'] === 'NL_nl') {
-								echo '<li><a href="?language=EN_en">English</a></li>';
+					<?php 	
+							if ($_GET['language'] === 'NL_nl') {
+								echo '<li><a class="language" href="?language=EN_en">English</a></li>';
 							} elseif ($_GET['language'] === 'EN_en') {
-								echo '<li><a href="?language=NL_nl">Nederlands</a></li>';
+								echo '<li><a class="language" href="?language=NL_nl">Nederlands</a></li>';
 							} else {
-								echo '<li><a href="?language=EN_en">English</a></li>';
+								echo '<li><a class="language" href="?language=EN_en">English</a></li>';
 							}
 					?>	
 				</ul>
+				<span class="clearfix"></span>
 			</div>
 			<div class="logo-container">
 				<a class="logo" href="http://www.marlieshartog.nl">Marlies Hartog</a>
-			</div> 
+			</div>
+			 
 		</header>
 	<!--site wrapper-->
 		<div class="site-wrapper">
@@ -85,10 +101,7 @@
 					<p class="work-motivation"><?php echo $texts[1]; ?></p>
 					<p class="personal-motivation"><?php echo $texts[2];?></p>
 					<span class="clearfix"></span>
-
-					<form method="get" action="cv_marlieshartog.doc">
-						<button type="submit">Resume(.PDF)</button>
-					</form> 
+					<a class="button" href="files/CV_MPHartog.pdf">Resume(.PDF)</a>
 				</div>
 				<div class="paragraph portfolio">
 					<div class="portfolio-header">

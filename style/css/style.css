@@ -1356,7 +1356,7 @@ p {
   font-size: 16px;
   font-weight: bold; }
 
-button {
+button, .button {
   height: 30px;
   padding: 0 25px;
   border: 0;
@@ -1370,6 +1370,13 @@ header {
   height: 160px;
   background: white; }
 
+.language {
+  text-decoration: none;
+  color: black; }
+  .language ul {
+    list-style: none;
+    float: right; }
+
 .logo-container {
   display: block;
   width: 100%;
@@ -1381,7 +1388,7 @@ header {
   width: 195px;
   display: block;
   text-indent: -2000px;
-  margin: 60px auto 0; }
+  margin: 0 auto; }
 
 .site-wrapper {
   display: block;
@@ -1401,13 +1408,25 @@ header {
         padding-right: 12px; }
       .site-wrapper .about-me p.personal-motivation {
         padding-left: 12px; }
-    .site-wrapper .about-me form {
+    .site-wrapper .about-me .button {
+      text-decoration: none;
+      color: black;
+      font-weight: normal;
+      display: block;
+      width: 160px;
+      line-height: 30px;
+      padding: 0 25px;
+      border: 0;
+      text-transform: uppercase;
+      font-family: "Didact Gothic", sans-serif;
+      font-size: 16px;
+      font-weight: bold;
+      border: 0;
+      background-color: #ED9E6D;
+      box-shadow: 0 3px #C4835A;
       height: 30px;
-      text-align: center; }
-      .site-wrapper .about-me form button {
-        border: 0;
-        background-color: #ED9E6D;
-        box-shadow: 0 3px #C4835A; }
+      text-align: center;
+      margin: 0 auto; }
   .site-wrapper .portfolio {
     background: white; }
     .site-wrapper .portfolio .portfolio-header {

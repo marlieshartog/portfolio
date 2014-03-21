@@ -8,7 +8,6 @@
 	 * There is no form to show
 	 */
 	
-	// Hoooooi GITHUB
 
 	$session = false; 
 	$form 	= ''; 
@@ -45,10 +44,9 @@
 		}  
 	}
 
-	// include('html_kop.inc.php');
-
-	if (isset($_SESSION['sid']) && $_COOKIE['PHPSESSID'] == $_SESSION['sid']) {
-	} else {
+	if (!isset($_SESSION['sid']) 
+	&& $_COOKIE['PHPSESSID'] != @$_SESSION['sid']) {
+	// } else {
 		echo $form;
 		die();
 	}
@@ -59,6 +57,7 @@
 	 * @return [type]        [description]
 	 */
 	function signin(&$back) {
+
 		global $db;
 		$ok = true;
 
@@ -66,21 +65,44 @@
 			$back['error_username'] = 'Vul gebruikersnaam in.';
 			$ok &= false;
 		}
+
 		if ($_POST['password'] == '') {
-			$back['error_pass'] = 'Vul wachtwoord in.';
+			$back['error_pass'] 	= 'Vul wachtwoord in.';
 			$ok &= false;
 		}
+
 		if ($ok) {
 			//check database for correct match
 			// get NAME from database
-			$sql 		= "SELECT id, username FROM user WHERE username = '".$_POST['username']."' && password = '".$db->versleutel($_POST['password'])."'";
-			$records 	= $db->querydb($sql);
+			
+			$sql = " 	SELECT id, username 
+						FROM user 
+						WHERE username = :username && password = :password
+					";
+
+			$parameters = array(
+							':username'		=> $_POST['username'],
+							':password'		=> $db->versleutel($_POST['password'])
+						);
+
+			$records = 	$db->querydb($sql, $parameters);
 			
 			if (count($records) > 0) {
 			// session-id in db stoppen
-				$sql = "UPDATE user SET sid = '".session_id()."'WHERE id='".$records[0]['id']."'"; 
-				$db->querydb($sql);
+				$sql = "	UPDATE user 
+							SET sid  = :sid
+							WHERE id = :id
+						"; 
+
+				$parameters = array(
+								':sid'	=> session_id(),
+								':id'	=> $records[0]['id']
+							);
+
+				$db->querydb($sql, $parameters);
+
 				return $records[0]['username']; 
+
 			} else {
 				$back['error_username'] = 'Gegevens niet correct.';
 				return false; 
@@ -91,11 +113,13 @@
 	}
 	
 	function create_session($name) {
+
 		$_SESSION['sid'] 	= session_id(); 
 		$_SESSION['name'] 	= $name; 
 	}
 
 	function destroy_session() {
+
 		setcookie('PHPSESSID', '', time()-3600, './'); 
 		session_destroy();
 		session_unset();
@@ -111,18 +135,13 @@
 	// }
 
 	function form_in($gegevens = array()){
+
 		$to_return = '<h1>Sign In</h1>';
 		$to_return .= '<form name="signin" action="" method="POST">';
 		
 		if(isset($gegevens['error_username'])){
 			$to_return .= $gegevens['error_username'].'<br/>';
 		}
-
-		// if(isset($_POST['username'])){
-		// 	$prefill = $_POST['username'];
-		// }else{
-		// 	$prefill = '';
-		// }
 
 		$to_return .='
 			Username:
@@ -142,6 +161,7 @@
 	}
 
 	function form_out(){
+
 		return '
 		<div>Ingelogd als '.$_SESSION['name'].'</div>
 			<div id="afmeldformulier">
